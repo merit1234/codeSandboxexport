@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form submission</title>
+    <link rel="stylesheet" href="./merit.css" />
+  </head>
+  <body>
+    <h2>Customer Data Form</h2>
+    <form id="dataForm">
+      <label for="FirstName">FirstName:</label><br />
+      <input type="text" id="FirstName" name="FirstName" /><br />
+      <label for="LastName">LastName:</label><br />
+      <input type="text" id="LastName" name="LastName" /><br />
+      <label for="Email">Email:</label><br />
+      <input type="Email" id="Email" name="Email" /><br />
+      <label for="PhoneNumber">PhoneNumber:</label><br />
+      <input type="PhoneNumber" id="PhoneNumber" name="PhoneNumber" /><br />
+      <label for="Address">Address:</label><br />
+      <input type="Address" id="Address" name="Address" /><br />
+      <label for="Age">Age:</label><br />
+      <input type="Age" id="Age" name="Age" /><br />
+      <button type="button" id="submitBtn">Submit</button>
+    </form>
+
+    <div id="messageContainer"></div>
+
+    <script>
+      document
+        .getElementById("submitBtn")
+        .addEventListener("click", function () {
+          var form = document.getElementById("dataForm");
+          var formData = new FormData(form);
+          var message = "<h2>Form Data:</h2><ul>";
+          formData.forEach(function (value, key) {
+            message += "<li><strong>" + key + ":</strong> " + value + "</li>";
+          });
+          message += "</ul>";
+          document.getElementById("messageContainer").innerHTML = message;
+        });
+    </script>
+
+    <script>
+      document
+        .getElementById("dataForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var inputs = document.querySelectorAll("#dataForm input[required]");
+          var allFilled = Array.from(inputs).every(
+            (input) => input.value.trim() !== ""
+          );
+          if (allFilled) {
+            document.getElementById("successMessage").style.display = "block";
+          }
+        });
+    </script>
+  </body>
+</html>

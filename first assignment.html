@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>JavaScript DOM Manipulation</h1>
+
+    <!-- Paragraph with initial text and background color -->
+    <p id="myParagraph" class="color-change">
+      Click the button to change my text and color!
+    </p>
+    <!-- Button to trigger the color change -->
+    <button onclick="changeTextAndColor()">Change Text and Color</button>
+    <script>
+      // Function to change the text and background color of the paragraph
+      function changeTextAndColor() {
+        var paragraph = document.getElementById("myParagraph");
+        paragraph.textContent = "The text has changed!";
+        paragraph.style.backgroundColor = "lightblue";
+      }
+    </script>
+  </body>
+</html>
